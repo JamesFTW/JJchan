@@ -1,0 +1,30 @@
+html
+  head
+    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' type='text/css' rel='stylesheet')
+    link(href='/app.css' type='text/css' rel='stylesheet')
+    title= title
+  body
+    nav(class='navbar navbar-inverse navbar-static-top')
+      a(class='navbar-brand') JJchan
+    div(class='container')
+      form(method = 'POST', action = '/note')
+        div(class="form-group")
+          label() Username
+          input(class= 'username form-control' placeholder = 'username', name = 'username')
+        div(class="form-group")
+          label() Message
+          textarea(class= 'text form-control' rows='3'  placeholder = 'text', name = 'body')
+        button(class='btn btn-default') submit
+      ul(class='list-group')
+        each note in notes.reverse()
+          li(class='list-group-item')
+            h4(class='list-group-item-heading') !{note.body}
+            p(class='list-group-item-text')= 'from '+ note.username
+            div(class='btn-group')
+              button(class= 'edit btn btn-default', data-id= note.id) edit
+              button(class = 'delete btn btn-default', data-id= note.id) delete
+
+
+
+  script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+  script(src='/app.js')
