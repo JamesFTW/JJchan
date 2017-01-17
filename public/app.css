@@ -1,3 +1,7 @@
 body{
   background: #f5f8fa;
 }
+img{
+  max-width: 500px;
+  display: block;
+}
